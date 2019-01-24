@@ -4,13 +4,19 @@ const _ = require('lodash')
 
 
 class CorezoidSdk {
-  constructor(host) {
-    if (!_.isString(host)) {
-       throw new Error('invalid host');
-    }
+  constructor(name) {
+    this.name = name;
 
-    this.host = host;
+	//if (!_.isString(host)) {
+    //   throw new Error('invalid host');
+    //}
+
+    //this.host = host;
   }
+
+ whoami(){
+   return "Привет " + this.name
+ }
 
   async getScheme(obj_id, obj_type) {
 	const { data } = await axios.post(this.host, {"ops":[{"type":"get", "obj":"obj_scheme", obj_id, obj_type}]})
